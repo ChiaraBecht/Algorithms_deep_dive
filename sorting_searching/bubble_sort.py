@@ -14,7 +14,6 @@ def conduct_bubble_sort(data):
         print(data)
         data_len = len(data)
         for i in range(data_len - 1): # skip last pass where we only look on the first element
-            print(i)
             swap = {"yes": 0, "no": 0}
             for j in range(0, data_len - i - 1): # shortening the comparisons omitting the last elements that where sorted already
                 if data[j] > data[j+1]:
