@@ -8,17 +8,28 @@ def conduct_merge_sort(data):
     if len(data) > 1:
         # find middle index
         middle_index = len(data) // 2
+
         # split list
         left_list = data[:middle_index]
         right_list = data[middle_index:]
-    else:
-        return data
+
+        # recursively sort the left and right halves:
+        conduct_merge_sort(left_list)
+        conduct_merge_sort(right_list)
+
+        # merge sorted halves back
+        merged_list = merging(left=left_list, right=right_list)
+
+        for i in range(len(data)):
+            data[i] = merged_list[i]
+    
+        return merged_list
 
 
 def merging(left, right):
-    """
-    left and right are sorted lists
-    """
+
+    #left and right are sorted lists
+    
     result = []
     i = 0
     j = 0
@@ -46,3 +57,8 @@ def merging(left, right):
 if __name__ == "__main__":
     res = merging(left=[2, 3, 5], right=[1, 4, 6])
     print(res)
+
+    # try merge_sort
+    unsorted = [6, 4, 5, 1, 2, 3]
+    sorted = conduct_merge_sort(unsorted)
+    print(sorted)
